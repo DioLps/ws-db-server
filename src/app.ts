@@ -1,56 +1,34 @@
 import express from "express";
-import { createServer, Server as HttpServer } from "http";
-import { Server, Socket } from "socket.io";
-import { WsEvents } from "./ws-event.enum";
+import { Server, createServer } from "http";
+
+import cors from "cors";
+
+import routes from "./routes";
+import { WsConfig } from "./core";
 
 class App {
   public PORT: number = 8100;
   public app: express.Application;
-  public server: HttpServer;
+  public server: Server;
 
-  private io: Server;
+  private ws: WsConfig;
 
   constructor() {
-    this.routes();
+    this.app = express();
+    this.middlewares();
     this.initSockets();
-    this.openWsConnection();
   }
 
-  public routes(): void {
-    this.app = express();
-    this.app.route("/").get((req, res) => {
-      res.send("Hellow my friendo!");
-    });
+  private middlewares(): void {
+    this.app.use(express.json());
+    this.app.use(cors());
+    this.app.use(routes);
   }
 
   private initSockets(): void {
     this.server = createServer(this.app);
-    this.io = new Server(this.server, {
-      cors: {
-        origin: "http://127.0.0.1:5500/",
-        methods: ["GET", "POST"]
-      },
-    });
-  }
-
-  private openWsConnection(): void {
-    this.io.on(WsEvents.CONNECT, (socket: any) => {
-      console.log("User connected");
-      this.openMainChannel(socket);
-      this.onDisconnectWs(socket);
-    });
-  }
-
-  private openMainChannel(socket: Socket<any>): void {
-    socket.on(WsEvents.CHANNEL_MSG_NAME, (collection: any) => {
-      console.log("message: " + collection);
-    });
-  }
-
-  private onDisconnectWs(socket: Socket<any>): void {
-    socket.on(WsEvents.DISCONNECT, () => {
-      console.log("user disconnected");
-    });
+    this.ws = new WsConfig(this.server);
+    this.ws.openWsConnection();
   }
 }
 
