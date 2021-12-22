@@ -2,12 +2,13 @@
   "name": "ws-db-server",
   "version": "1.0.0",
   "description": "",
-  "main": "index.js",
+  "main": "server.js",
   "scripts": {
-    "start": "tsc && node dist/server.js",
+    "start": "node dist/server.js",
+    "build": "tsc",
+    "serve": "npm run build && npm run start",
     "dev": "nodemon --watch src --ext ts --exec ts-node src/server.ts",
-    "build:server": "tsc",
-    "test": "echo \"Error: no test specified\" && exit 1"
+    "postinstall": "npm run build"
   },
   "keywords": [],
   "author": "",
