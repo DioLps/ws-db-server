@@ -7,7 +7,7 @@ import routes from "./routes";
 import { WsConfig } from "./core";
 
 class App {
-  public PORT: number = 8100;
+  public PORT: number = 4000;
   public app: express.Application;
   public server: Server;
 
