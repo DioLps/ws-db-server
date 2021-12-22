@@ -10,8 +10,10 @@ export class DbConfig {
     console.log("Db closed!");
   }
 
-  public listCollections(): any {
-    return this.client.connection.collections;
+  public async listCollections(): Promise<Array<RtCollectionModel> | any> {
+    const models: mongoose.Model<RtCollectionModel> =
+      this.client.connection.models["RtCollection"];
+    return await models.find();
   }
 
   public addToCollection(collection: RtCollectionModel): Promise<any> {
