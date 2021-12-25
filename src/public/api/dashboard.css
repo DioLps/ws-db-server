@@ -1,0 +1,47 @@
+@import url("./base.css");
+
+.dashboard {
+  flex-direction: column;
+}
+
+.dashboard__header {
+  background-color: #282828;
+  display: flex;
+  align-items: center;
+  justify-content: space-between;
+  padding: 0 1rem;
+  min-height: 3.5rem;
+  box-shadow: 0 1px 3px rgba(0,0,0,0.12), 0 1px 2px rgba(0,0,0,0.24);
+}
+
+/* .dashboard__nav {
+} */
+
+.dashboard__link {
+  color: white;
+  text-decoration: none;
+}
+
+.dashboard__link:hover {
+  text-decoration: underline;
+}
+
+.dashboard__icon {
+  width: 2rem;
+  /* White Filter */
+  filter: invert(100%) sepia(5%) saturate(22%) hue-rotate(123deg)
+    brightness(104%) contrast(104%);
+}
+.dashboard__content {
+  padding: 1rem;
+  color: white;
+}
+
+.dashboard__card {
+  background-color: #282828;
+  border-radius: 0.25rem;
+  padding: 1rem;
+  text-align: justify;
+  line-height: 1.4;
+  box-shadow: 0 1px 3px rgba(0,0,0,0.12), 0 1px 2px rgba(0,0,0,0.24);
+}

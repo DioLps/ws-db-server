@@ -1,0 +1,105 @@
+@import url("./base.css");
+
+.form {
+  flex: 0 0 35%;
+  height: 100vh;
+  padding: 1rem;
+  display: flex;
+  flex-direction: column;
+  row-gap: 1rem;
+  background-color: #242424;
+  /* justify-content: center; */
+}
+
+.form__email,
+.form__password,
+button,
+.form__back,
+.form__forgot-password {
+  min-height: 2rem;
+  border: none;
+  border-radius: 0.25rem;
+  font-size: 1.2rem;
+  padding-top: 0.5rem;
+  padding-bottom: 0.5rem;
+}
+
+.form__email,
+.form__password {
+  padding-left: 0.8rem;
+  padding-right: 0.8rem;
+}
+
+.form__submit,
+.form__back,
+.form__forgot-password {
+  cursor: pointer;
+  border: none;
+  color: white;
+  font-weight: bold;
+  letter-spacing: 1.4px;
+  background-image: linear-gradient(to right, lightskyblue, lightseagreen);
+}
+
+.form__submit:hover,
+.form__back:hover,
+.form__forgot-password:hover {
+  background-image: linear-gradient(to right, #20aaff, #12f3e7);
+}
+
+.form__title {
+  color: white;
+  letter-spacing: 1.5px;
+  margin-top: 0;
+}
+
+.form__info {
+  margin: 0;
+  text-align: center;
+  color: white;
+  letter-spacing: 1.5px;
+}
+
+.form__logo {
+  display: block;
+  margin: 0 auto;
+  margin-top: 4rem;
+  margin-bottom: 2rem;
+  width: 10rem;
+  /* White Filter */
+  filter: invert(100%) sepia(5%) saturate(22%) hue-rotate(123deg)
+    brightness(104%) contrast(104%);
+}
+
+.form__back,
+.form__forgot-password {
+  text-align: center;
+  text-decoration: none;
+}
+
+@media only screen and (max-width: 768px) {
+  .form {
+    flex: 0 0 100%;
+  }
+
+  .form__email,
+  .form__password,
+  button,
+  .form__back,
+  .form__forgot-password {
+    font-size: 1rem;
+  }
+
+  .form__logo {
+    margin-top: 2rem;
+    width: 5rem;
+  }
+
+  .form__info {
+    font-size: 1rem;
+  }
+
+  .form__title {
+    font-size: 1.5rem;
+  }
+}
